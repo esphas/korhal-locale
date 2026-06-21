@@ -1,0 +1,14 @@
+{
+  "name": "korhal-locale",
+  "version": "1.0.0",
+  "title": "Korhal Locale · Korhal 汉化",
+  "author": "esphas",
+  "description": "对部分模组的补充汉化。",
+  "factorio_version": "2.0",
+  "dependencies": [
+    "base >= 2.0.0",
+    "? chinese",
+    "? aotixzhcn",
+    "? zhcnremake"
+  ]
+}
