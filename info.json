@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "title": "Korhal Locale · Korhal 汉化",
   "author": "esphas",
-  "description": "对部分模组的补充汉化。",
+  "description": "对部分模组的补充汉化。\n目前包括：\n  天文无界系列（阿里格 Arig，海里昂 Hyarion，泰勒斯 Tellus，天文无界染料 Planetaris Dyes）\n  冷凝农业塔 Condensing Agricultural Tower\n  灯柱 Lamp Post\n  疏浚工程 Dredgeworks",
   "factorio_version": "2.0",
   "dependencies": [
     "base >= 2.0.0",
