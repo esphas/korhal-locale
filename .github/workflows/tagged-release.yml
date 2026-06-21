@@ -1,0 +1,38 @@
+name: tagged-release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build mod zip
+        run: |
+          MOD_NAME="${{ github.event.repository.name }}"
+          ARCHIVE="${MOD_NAME}.zip"
+
+          mkdir -p "package/${MOD_NAME}" dist
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='dist' \
+            --exclude='package' \
+            ./ "package/${MOD_NAME}/"
+
+          (cd package && zip -r "../dist/${ARCHIVE}" "${MOD_NAME}")
+          echo "archive=${ARCHIVE}" >> "$GITHUB_ENV"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/${{ env.archive }}
+          generate_release_notes: true

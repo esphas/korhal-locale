@@ -1,6 +1,6 @@
 {
   "name": "korhal-locale",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "title": "Korhal Locale · Korhal 汉化",
   "author": "esphas",
   "description": "对部分模组的补充汉化。\n目前包括：\n  天文无界系列（天文无界:阿里格 [Planetaris: Arig]，天文无界:海里昂 [Planetaris: Hyarion]，天文无界:泰勒斯 [Planetaris: Tellus]，天文无界:染料 [Planetaris: Dyes]）\n  冷凝农业塔 [Condensing agricultural tower]\n  灯柱 [Lamp post]\n  疏浚工程 [Dredgeworks]\n  勾陈星-分支 [Castra Prime]",
@@ -9,6 +9,15 @@
     "base >= 2.0.0",
     "? chinese",
     "? aotixzhcn",
-    "? zhcnremake"
+    "? zhcnremake",
+    "? planetaris-arig",
+    "? planetaris-dyes",
+    "? planetaris-hyarion",
+    "? planetaris-tellus",
+    "? condensing-agricultural-tower",
+    "? lamp-post",
+    "? dredgeworks",
+    "? castra",
+    "? castra-prime"
   ]
 }
