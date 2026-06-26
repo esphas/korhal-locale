@@ -11,8 +11,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parent
 REFERENCES = WORKSPACE / "references"
+from locale_registry import REGISTRY_PATH, en_source_map, load_registry
+
 LOCALE_DIR = ROOT / "locale" / "zh-CN"
-MANIFEST = Path(__file__).with_name("locale_sources.json")
 SKIP_CFG = {"meta.cfg"}
 
 
@@ -46,6 +47,26 @@ def diff_keys(
     return missing, extra
 
 
+def parse_cfg_loose(path: Path) -> dict[str, str]:
+    """Include keys before the first [section] (runtime messages)."""
+    data: dict[str, str] = {}
+    section: str | None = None
+    for line in path.read_text(encoding="utf-8").splitlines():
+        raw = line.strip()
+        if not raw or raw.startswith("#") or raw.startswith(";"):
+            continue
+        match = re.match(r"\[(.+)\]", raw)
+        if match:
+            section = match.group(1)
+            continue
+        if "=" in raw:
+            if section is None:
+                section = "[no-section]"
+            key, value = raw.split("=", 1)
+            data[f"{section}|{key.strip()}"] = value
+    return data
+
+
 def parse_cfg(path: Path) -> dict[str, str]:
     data: dict[str, str] = {}
     section: str | None = None
@@ -61,6 +82,11 @@ def parse_cfg(path: Path) -> dict[str, str]:
             key, value = raw.split("=", 1)
             data[f"{section}|{key.strip()}"] = value
     return data
+
+
+def parse_cfg_auto(path: Path) -> dict[str, str]:
+    data = parse_cfg(path)
+    return data if data else parse_cfg_loose(path)
 
 
 def parse_version(version: str) -> tuple[int, ...]:
@@ -133,7 +159,7 @@ def default_locale_paths(mod_id: str, ref_dir: Path) -> list[str]:
             return [rel]
     raise FileNotFoundError(
         f"no default English locale under {ref_dir.relative_to(WORKSPACE)}; "
-        f"add entry to locale_sources.json"
+        f"add entry to {REGISTRY_PATH.name}"
     )
 
 
@@ -160,7 +186,7 @@ def load_en_keys(mod_id: str, en_paths: list[Path]) -> dict[str, str]:
     for path in en_paths:
         if not path.is_file():
             raise FileNotFoundError(f"missing English source: {path}")
-        keys = parse_cfg(path)
+        keys = parse_cfg_auto(path)
         overlap = set(merged) & set(keys)
         if overlap:
             sample = sorted(overlap)[0]
@@ -214,7 +240,7 @@ def validate_mod(
             f"({ref_version or '?'}); skipped older: {skipped}"
         )
 
-    zh_keys_set = set(parse_cfg(zh_path))
+    zh_keys_set = set(parse_cfg_auto(zh_path))
     en_keys_set = set(en_keys)
     missing, extra = diff_keys(en_keys_set, zh_keys_set, mod_id)
     missing = sorted(missing)
@@ -301,7 +327,7 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    manifest = en_source_map()
     mod_ids = [args.mod_id] if args.mod_id else discover_mod_ids()
 
     all_errors: list[str] = []

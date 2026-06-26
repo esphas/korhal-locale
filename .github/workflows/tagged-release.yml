@@ -19,15 +19,13 @@ jobs:
         run: |
           MOD_NAME="${{ github.event.repository.name }}"
           ARCHIVE="${MOD_NAME}.zip"
+          DEST="package/${MOD_NAME}"
 
-          mkdir -p "package/${MOD_NAME}" dist
-          rsync -a \
-            --exclude='.git' \
-            --exclude='.github' \
-            --exclude='dist' \
-            --exclude='package' \
-            --exclude='tools' \
-            ./ "package/${MOD_NAME}/"
+          mkdir -p "${DEST}" dist
+
+          cp -r locale locale-align "${DEST}/"
+          cp changelog.txt info.json LICENSE.txt README.md thumbnail.png "${DEST}/"
+          cp data-final-fixes.lua "${DEST}/"
 
           (cd package && zip -r "../dist/${ARCHIVE}" "${MOD_NAME}")
           echo "archive=${ARCHIVE}" >> "$GITHUB_ENV"

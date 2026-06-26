@@ -1,0 +1,415 @@
+{
+  "Moshine": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [
+      "Moshine-assets",
+      "snouz-big-accumulator",
+      "snouz-big-solar-panel",
+      "snouz_better_substation",
+      "minimalist-rails",
+      "se-space-trains",
+      "long_stack_inserter",
+      "module-category-defaults"
+    ],
+    "optional_dependencies": [
+      "maraxsis",
+      "bzsilicon",
+      "Glass",
+      "aai-industry",
+      "omnimatter_compression",
+      "canal-excavator"
+    ],
+    "incompatible": []
+  },
+  "barreling-group2": {
+    "en": [
+      "locale/en/common.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [],
+    "incompatible": []
+  },
+  "barreling_machines": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [
+      "diesel_machines"
+    ],
+    "incompatible": [
+      "pelagos-autobarreling"
+    ]
+  },
+  "calciner": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [
+      "diesel_engine"
+    ],
+    "optional_dependencies": [],
+    "incompatible": []
+  },
+  "canal-excavator": {
+    "en": [
+      "locale/en/english.cfg"
+    ],
+    "dependencies": [
+      "flib",
+      "canal-excavator-graphics"
+    ],
+    "optional_dependencies": [
+      "space-exploration"
+    ],
+    "incompatible": []
+  },
+  "cargo_crates": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [
+      "TFMG",
+      "Cerys-Moon-of-Fulgora",
+      "planet-muluna",
+      "lignumis",
+      "alchemy-khemia",
+      "cloud-city",
+      "quality-processing",
+      "exotic-space-industries-remembrance"
+    ],
+    "incompatible": []
+  },
+  "castra-prime": {
+    "en": [
+      "locale/en/castra-prime.cfg",
+      "locale/en/settings.cfg"
+    ],
+    "dependencies": [
+      "castra-prime-assets"
+    ],
+    "optional_dependencies": [
+      "alien-biomes",
+      "landing-pad-research",
+      "maraxsis",
+      "planet-muluna",
+      "Cerys-Moon-of-Fulgora",
+      "modules-t4"
+    ],
+    "incompatible": [
+      "castra"
+    ]
+  },
+  "condensing-agricultural-tower": {
+    "en": [
+      "locale/en/en.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [],
+    "incompatible": []
+  },
+  "deepsea_mechanic": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [],
+    "incompatible": []
+  },
+  "diesel_cargo_ships": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [
+      "cargo-ships",
+      "diesel_engine",
+      "talandar_cargo_ships_tweaks"
+    ],
+    "optional_dependencies": [
+      "aai-vehicles-ironclad",
+      "ironclad-gunboat-and-mortar-turret-fork"
+    ],
+    "incompatible": []
+  },
+  "diesel_engine": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [
+      "maraxsis",
+      "Krastorio2-spaced-out",
+      "PlanetsLib",
+      "planet-muluna"
+    ],
+    "incompatible": []
+  },
+  "diesel_machines": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [
+      "diesel_engine"
+    ],
+    "optional_dependencies": [
+      "diesel_trains",
+      "offshore_pump_require_power",
+      "calciner"
+    ],
+    "incompatible": []
+  },
+  "heavy_gun_turret": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [],
+    "incompatible": []
+  },
+  "lamp-post": {
+    "en": [
+      "locale/en/en.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [],
+    "incompatible": []
+  },
+  "lighthouse_radar": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [
+      "diesel_engine"
+    ],
+    "optional_dependencies": [
+      "cargo-ships"
+    ],
+    "incompatible": []
+  },
+  "lignumis": {
+    "en": [
+      "locale/en/strings.cfg"
+    ],
+    "dependencies": [
+      "cf-lib",
+      "module-category-defaults",
+      "flib",
+      "lignumis-assets",
+      "PlanetsLib",
+      "pollution-as-surface-property",
+      "Wood-Walls"
+    ],
+    "optional_dependencies": [
+      "aai-industry",
+      "aai-loaders",
+      "aai-loaders-sane",
+      "Age-of-Production",
+      "any-planet-start",
+      "astroponics",
+      "canal-excavator",
+      "crushing-industry",
+      "fulgora-coralmium-agriculture",
+      "gleba-water-cane",
+      "hot-metals",
+      "lane-splitters",
+      "science-tab",
+      "vulcanus-sulfuric-bacteria",
+      "wood-industry",
+      "wood-military",
+      "wood-logistics",
+      "zen-garden",
+      "atan-nuclear-science",
+      "Diversitree",
+      "gleba-reborn",
+      "Krastorio2-spaced-out",
+      "metal-and-stars",
+      "planet-muluna",
+      "secretas",
+      "Wood_Gasification_updated"
+    ],
+    "incompatible": [
+      "apm_power_ldinc",
+      "early-agriculture",
+      "planet-picker",
+      "wood-universe-modpack",
+      "rso-mod"
+    ]
+  },
+  "long_range_delivery_drones_talandar_fork": {
+    "en": [
+      "locale/en/long-range-delivery-drones.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [],
+    "incompatible": []
+  },
+  "lubrication_tower": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [
+      "diesel_engine"
+    ],
+    "optional_dependencies": [
+      "zzz-nonstandard-beacons"
+    ],
+    "incompatible": []
+  },
+  "panglia_planet": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [
+      "panglia_planet_assets",
+      "PlanetsLib",
+      "Moshine",
+      "thinking_brain",
+      "matter_printer",
+      "Cloning-vat-building",
+      "snouz_better_asteroid_collector",
+      "snouz_long_electric_gun_turret",
+      "snouz_space_platform_hull",
+      "module-category-defaults"
+    ],
+    "optional_dependencies": [
+      "canal-excavator",
+      "Tiered-Solar-System"
+    ],
+    "incompatible": []
+  },
+  "pelagos": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [
+      "cargo_crates",
+      "canal-excavator",
+      "diesel_engine",
+      "cargo-ships",
+      "pirateship",
+      "long_range_delivery_drones_talandar_fork",
+      "barreling-group2",
+      "diesel_cargo_ships",
+      "diesel_machines",
+      "wooden_platform",
+      "lubrication_tower",
+      "lighthouse_radar",
+      "heavy_gun_turret",
+      "barreling_machines",
+      "calciner",
+      "deepsea_mechanic"
+    ],
+    "optional_dependencies": [
+      "apia",
+      "Cerys-Moon-of-Fulgora",
+      "planetaris-arig",
+      "maraxsis",
+      "skewer_planet_vesta",
+      "boompuff-agriculture",
+      "aai-vehicles-ironclad",
+      "ironclad-gunboat-and-mortar-turret-fork",
+      "colorful_biochamber",
+      "InserterFuelLeech",
+      "spoiled_trenches_of_fulgora",
+      "sand_seas_of_arig",
+      "depths_of_nauvis",
+      "multi_surface_promethium_plate_recipe",
+      "gleba_cultured_soil",
+      "PlanetsLib"
+    ],
+    "incompatible": [
+      "Long_Range_Delivery_Drones",
+      "auto-barrel"
+    ]
+  },
+  "pirateship": {
+    "en": [
+      "locale/en/settings.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [],
+    "incompatible": []
+  },
+  "planetaris-arig": {
+    "en": [
+      "locale/en/en.cfg"
+    ],
+    "dependencies": [
+      "PlanetsLib",
+      "condensing-agricultural-tower"
+    ],
+    "optional_dependencies": [
+      "celestial-weather",
+      "any-planet-start",
+      "aai-loaders",
+      "visible-planets",
+      "canal-excavator"
+    ],
+    "incompatible": []
+  },
+  "planetaris-hyarion": {
+    "en": [
+      "locale/en/en.cfg"
+    ],
+    "dependencies": [
+      "lamp-post",
+      "PlanetsLib"
+    ],
+    "optional_dependencies": [
+      "planetaris-arig",
+      "celestial-weather",
+      "aai-loaders"
+    ],
+    "incompatible": []
+  },
+  "rubia": {
+    "en": [
+      "locale/en/rubia.cfg"
+    ],
+    "dependencies": [
+      "PlanetsLib",
+      "rubia-assets",
+      "machine-upgrades"
+    ],
+    "optional_dependencies": [
+      "RocketCargoInsertion"
+    ],
+    "incompatible": []
+  },
+  "slp-dyson-sphere-reworked": {
+    "en": [
+      "locale/en/strings.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [],
+    "incompatible": []
+  },
+  "tenebris-prime": {
+    "en": [
+      "locale/en/tenebris.cfg"
+    ],
+    "dependencies": [
+      "PlanetsLib"
+    ],
+    "optional_dependencies": [],
+    "incompatible": [
+      "ams-acid-landfill",
+      "beacon_maraxsis_tenebris",
+      "tenebris_sulfur",
+      "tenebris"
+    ]
+  },
+  "wooden_platform": {
+    "en": [
+      "locale/en/locale.cfg"
+    ],
+    "dependencies": [],
+    "optional_dependencies": [],
+    "incompatible": [
+      "gz-tweaks"
+    ]
+  }
+}
