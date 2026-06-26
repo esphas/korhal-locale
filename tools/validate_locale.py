@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 WORKSPACE = ROOT.parent
 REFERENCES = WORKSPACE / "references"
+from locale_delegated import parse_full_cfg
 from locale_registry import REGISTRY_PATH, en_source_map, load_registry
 
 LOCALE_DIR = ROOT / "locale" / "zh-CN"
@@ -22,10 +23,15 @@ def mod_name_aliases(mod_id: str) -> dict[str, str]:
     return {f"mod-name|title": f"mod-name|{mod_id}"}
 
 
+def mod_description_aliases(mod_id: str) -> dict[str, str]:
+    """Map generic mod-description keys to mod-id keyed entries."""
+    return {f"mod-description|description": f"mod-description|{mod_id}"}
+
+
 def diff_keys(
     en_keys: set[str], zh_keys: set[str], mod_id: str
 ) -> tuple[set[str], set[str]]:
-    alias = mod_name_aliases(mod_id)
+    alias = {**mod_name_aliases(mod_id), **mod_description_aliases(mod_id)}
     missing: set[str] = set()
     for key in en_keys:
         if key in zh_keys:
@@ -240,7 +246,7 @@ def validate_mod(
             f"({ref_version or '?'}); skipped older: {skipped}"
         )
 
-    zh_keys_set = set(parse_cfg_auto(zh_path))
+    zh_keys_set = set(parse_full_cfg(zh_path))
     en_keys_set = set(en_keys)
     missing, extra = diff_keys(en_keys_set, zh_keys_set, mod_id)
     missing = sorted(missing)

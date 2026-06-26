@@ -36,11 +36,23 @@ local SCAN_TYPES = {
 
 local function set_field(proto, field, text)
   if proto and field and text then
-    proto[field] = { text }
+    -- Empty first element = literal text; otherwise Factorio treats it as a locale key.
+    proto[field] = { "", text }
+  end
+end
+
+local function apply_surface_property(name, text)
+  local bucket = data.raw["surface-property"]
+  if bucket and bucket[name] then
+    bucket[name].localised_name = { "", text }
   end
 end
 
 local function apply_text(name, section, text)
+  if section == "surface-property-name" then
+    apply_surface_property(name, text)
+    return
+  end
   local field = NAME_SECTIONS[section] or DESC_SECTIONS[section]
   if not field then
     return

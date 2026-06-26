@@ -12,6 +12,7 @@ import re
 import sys
 from pathlib import Path
 
+from locale_delegated import parse_full_cfg, rewrite_cfg
 from locale_registry import (
     conditional_stacks,
     en_source_map,
@@ -75,7 +76,20 @@ def load_reference_en(mod_id: str, en_sources: dict[str, list[str]]) -> dict[str
 
 def load_korhal_zh(mod_id: str) -> dict[str, str]:
     path = LOCALE / f"{mod_id}.cfg"
-    return parse_cfg_auto(path) if path.is_file() else {}
+    return parse_full_cfg(path) if path.is_file() else {}
+
+
+def zh_get(zh: dict[str, str], key: str, mod_id: str) -> str:
+    if key in zh:
+        return zh[key]
+    for alias_fn in (
+        lambda mid: {f"mod-description|description": f"mod-description|{mid}"},
+        lambda mid: {f"mod-name|title": f"mod-name|{mid}"},
+    ):
+        alt = alias_fn(mod_id).get(key)
+        if alt and alt in zh:
+            return zh[alt]
+    return ""
 
 
 def standalone_value(key: str, dep_ids: list[str], dep_zh: dict[str, dict[str, str]]) -> str:
@@ -111,7 +125,9 @@ def process_stack(
 
     overlap = sorted(set(anchor_en) & dep_en_keys)
     anchor_zh = load_korhal_zh(anchor)
-    missing_overlap = [key for key in overlap if key not in anchor_zh]
+    missing_overlap = [
+        key for key in overlap if not zh_get(anchor_zh, key, anchor)
+    ]
     if missing_overlap:
         print(
             f"warn: {anchor}.cfg missing {len(missing_overlap)} overlap key(s)",
@@ -123,10 +139,13 @@ def process_stack(
             print(f"  ... and {len(missing_overlap) - 10} more", file=sys.stderr)
 
     override_entries: list[dict[str, str]] = []
+    skip_sections = {"mod-name", "mod-description"}
     for key in overlap:
         section, name = key.split("|", 1)
+        if section in skip_sections:
+            continue
         standalone = standalone_value(key, dep_ids, dep_zh)
-        anchor_val = anchor_zh.get(key, "")
+        anchor_val = zh_get(anchor_zh, key, anchor)
         if anchor_val and anchor_val != standalone:
             override_entries.append(
                 {
@@ -139,6 +158,32 @@ def process_stack(
             )
 
     return override_entries, len(overlap), len(override_entries), missing_overlap
+
+
+def apply_delegated_strips(
+    all_overrides: list[dict[str, str]],
+    stacks: list[dict[str, object]],
+) -> None:
+    by_anchor: dict[str, dict[str, str]] = {}
+    for entry in all_overrides:
+        anchor = entry["anchor"]
+        compound = f"{entry['section']}|{entry['key']}"
+        by_anchor.setdefault(anchor, {})[compound] = entry["text"]
+
+    for stack in stacks:
+        anchor = str(stack["anchor"])
+        path = LOCALE / f"{anchor}.cfg"
+        if not path.is_file():
+            continue
+        delegated = by_anchor.get(anchor, {})
+        removed, cleared = rewrite_cfg(path, delegated)
+        if delegated:
+            print(
+                f"{anchor}: delegated {len(delegated)} key(s), "
+                f"stripped {removed} from runtime cfg"
+            )
+        elif cleared:
+            print(f"{anchor}: cleared delegated block")
 
 
 def write_overrides_lua(entries: list[dict[str, str]]) -> None:
@@ -192,6 +237,7 @@ def main() -> int:
         )
 
     write_overrides_lua(all_overrides)
+    apply_delegated_strips(all_overrides, stacks)
     print(f"total lua_overrides={len(all_overrides)} stacks={len(stacks)}")
     return 0
 

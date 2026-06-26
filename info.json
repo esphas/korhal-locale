@@ -1,6 +1,6 @@
 {
   "name": "korhal-locale",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "title": "Korhal Locale · Korhal 汉化",
   "author": "esphas",
   "description": "对部分模组的补充汉化。\n目前包括：\n  - 天文无界:阿里格 [Planetaris: Arig]\n  - 天文无界:海里昂 [Planetaris: Hyarion]\n  - 冷凝农业塔 [Condensing agricultural tower]\n  - 灯柱 [Lamp post]\n  - 勾陈星-分支 [Castra Prime]\n  - 荆岚星 [Rubia]\n  - 愈创星 [Lignumis]\n  - 灼原星 [Moshine]\n  - 盘灵星 [Panglia Planet]\n  - 戴森球重制版 [SLP - Dyson Sphere Reworked]\n  - 特暗星-分支 [Tenebris Prime]\n  - 碧屿星 [Planet Pelagos]\n  - 货运箱 [Cargo Crates]\n  - 运河挖掘机 [Canal Excavator]\n  - 柴油引擎 [Diesel Engine]\n  - 柴油机械 [Diesel Machines]\n  - 柴油货船 [Diesel Cargo Ships]\n  - 大帆船 [Distant Shores]\n  - 远程配送无人机 [Long Range Delivery Drones (Talandar's Fork)]\n  - 装桶分组 [Barreling Group]\n  - 装桶机 [Barreling Machines]\n  - 木质平台 [Wooden Platform]\n  - 润滑塔 [Lubrication Tower]\n  - 灯塔雷达 [Lighthouse Radar]\n  - 重型机枪炮塔 [Heavy Gun Turret]\n  - 煅烧炉 [Calciner]\n  - 深海机制 [Deepsea Mechanic]",

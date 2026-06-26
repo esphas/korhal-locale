@@ -49,18 +49,4 @@ return {
     key = "canex-excavator",
     text = "柴油挖掘机",
   },
-  {
-    stack = "planetaris-arig",
-    anchor = "planetaris-arig",
-    section = "mod-description",
-    key = "description",
-    text = "一颗炎热的星球，拥有广阔的沙漠，其仅有的珍贵资源只能在地下或沙层中找到。持续的沙尘暴使机器人无法正常使用，且大部分地表若不铺设合适的地基则不适合建造。（警告：该星球的货物投放功能在研究完成前处于锁定状态）",
-  },
-  {
-    stack = "planetaris-hyarion",
-    anchor = "planetaris-hyarion",
-    section = "mod-description",
-    key = "description",
-    text = "一颗由晶体与熔岩构成的行星，折射光线从天而降，摧毁地表。",
-  },
 }
